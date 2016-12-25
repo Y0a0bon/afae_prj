@@ -1,0 +1,55 @@
+## AFAE ##
+
+Arithmetic Algorithms for Extended Precision Using Floating-Point Expansions
+
+1 Introduction
+
+  Besoin pour de nombreux problèmes d'une précision plus haute que le standard de double précision (ajd binary64)
+  Implementation existante mais rare d'une précision quadruple ou plus.
+  2 manières :
+	multiple-digit representation (sequence with a single exponent)
+	multiple-term representation (FP expansion)
+		not compliant with IEEE standard
+		do ont provide correctly rounded op
+  
+  In this article, focus on division and square root
+  2 ways to do this
+	digit-recurrence algorithms (paper-and-pencil method)
+	Newton-Raphson iteration based algotrithms
+  + new method for renormalization
+	use computer's pipeline
+	fast
+  Remember intro, variant algorithms of :
+	addition
+	multiplication
+
+2 FP Expansions
+
+ Floating-Point:
+	x = M_x * 2^(e_x - p + 1)
+	M_x Mantissa
+	e_x exponent
+	p precision
+  ulp(x) = 2^(e_x - p + 1) unit in the last place
+  uls(x) = 2^z_x unit in the last significant place
+	z_x : number of trailing zeros
+  To ensure the uniqueness of the representation : normalized representation
+	set the first bit of x to 1
+	x have to be more or equal to 2^e_min (e_min smallest exponent allowed)
+	Called subnormal numbers
+	IEEE standard specifies an underflow exception
+  FP expansion (extension of the notion of DD or QD)
+  Expansion is "redundant"
+	introducing a constraint : u_i's cannot "overlap"
+	P/S/B-overlapping (see article)
+		focus on P and B overlapping
+  
+  Error Free Transform
+  
+  Algo 2Sum (a,b) -> (s,e)
+	s result rn, e rounding error
+	6 flops (native FP operations)
+	
+  
+  
+  
